@@ -1,0 +1,10 @@
+name: JoinDate
+version: 1.0.0
+api: [5.0.0]
+main: Terpz710\JoinDate\Main
+author: Terpz710
+description: Get the players first join date.
+permissions:
+  joindate.cmd:
+    description: Allows players to get their join date.
+    default: true
