@@ -26,7 +26,7 @@ class JoinDateCommand extends Command implements PluginOwned {
 
     public function execute(CommandSender $sender, string $commandLabel, array $args): bool {
         if ($sender instanceof Player) {
-            $targetPlayer = $sender->getPlayer();
+            $targetPlayer = $sender->getPlayerInfo();
             $firstJoinDate = $targetPlayer->getFirstPlayed();
             $formattedDate = date("Y-m-d h:i A", $firstJoinDate);
             $sender->sendMessage("Your join date: " . $formattedDate);
