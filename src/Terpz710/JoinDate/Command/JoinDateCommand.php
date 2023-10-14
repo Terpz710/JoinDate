@@ -25,14 +25,18 @@ class JoinDateCommand extends Command implements PluginOwned {
     }
 
     public function execute(CommandSender $sender, string $commandLabel, array $args): bool {
-        if ($sender instanceof Player) {
-            $targetPlayer = $sender->getXuid();
+    if ($sender instanceof Player) {
+        $targetPlayer = $this->plugin->getServer()->getPlayerByXuid($sender->getXuid()); // Get the player instance
+        if ($targetPlayer instanceof Player) {
             $firstJoinDate = $targetPlayer->getFirstPlayed();
             $formattedDate = date("Y-m-d h:i A", $firstJoinDate);
             $sender->sendMessage("Your join date: " . $formattedDate);
         } else {
-            $sender->sendMessage("This command can only be used in-game.");
+            $sender->sendMessage("Player not found or is offline.");
         }
-        return true;
+    } else {
+        $sender->sendMessage("This command can only be used in-game.");
+    }
+    return true;
     }
 }
