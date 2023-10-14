@@ -26,7 +26,7 @@ class JoinDateCommand extends Command implements PluginOwned {
 
     public function execute(CommandSender $sender, string $commandLabel, array $args): bool {
         if ($sender instanceof Player) {
-            $targetPlayer = $this->plugin->getServer()->getPlayerByXuid($sender->getXuid()); // Get the player instance
+            $targetPlayer = $this->plugin->getServerUniqueId()->getPlayerByXuid($sender->getXuid()); // Get the player instance
             if ($targetPlayer instanceof Player) {
                 $firstJoinDate = $targetPlayer->getFirstPlayed();
                 $formattedDate = date("Y-m-d h:i A", $firstJoinDate);
